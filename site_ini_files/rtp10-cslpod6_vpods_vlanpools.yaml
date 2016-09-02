@@ -1,0 +1,101 @@
+---
+
+# vpod7 - sample vpod, used for reference
+vpod7:
+    vlan_pools:
+            - name: vpod5-aci2.0 
+              vlans: [2,3,4]
+              vlans_range: 
+                       - start: 20
+                         end: 30
+                       - start: 40
+                         end: 50
+    
+    phy_dom:
+          - name: vpod5-phys-dom
+            vlanNs: vpod5-aci2.0
+            aaep:
+                - vpod5-leaf1xx
+
+vpods:
+    vlan_pools:
+            - name: vpods-fw
+              vlans_range:
+                       - start: 100
+                         end: 199
+
+    ext_routed_dom:
+          - name: vpods-fw-ext-dom
+            vlanNs: vpods-fw
+            aaep:
+                - vpods-leaf3xx-fw
+
+          - name: vpods-l3-bb-dom
+            aaep:
+                - vpods-leaf8xx-l3-bb
+
+vpod1:
+   vlan_pools:
+           - name: vpod1-ss
+             vlans: [2,3,4,66,67,70]
+
+   phy_dom:
+         - name: vpod1-phys-dom
+           vlanNs: vpod1-ss
+           aaep:
+                - vpod1-leaf1xx
+
+vpod2:
+   vlan_pools:
+           - name: vpod2-fusion
+             vlans: [2,3,4,5,6]
+
+   phy_dom:
+         - name: vpod2-phys-dom
+           vlanNs: vpod2-fusion
+           aaep:
+                - vpod2-leaf1xx
+
+vpod3:
+   vlan_pools:
+           - name: vpod3-mantl
+             vlans: [2,3,4,5,6]
+
+   phy_dom:
+         - name: vpod3-phys-dom
+           vlanNs: vpod3-mantl
+           aaep:
+                - vpod3-leaf1xx
+
+vpod4:
+   vlan_pools:
+           - name: vpod4-oss
+             vlans: [2,10,20,30,40,50,60,70,80]
+
+   phy_dom:
+          - name: vpod4-phys-dom
+            vlanNs: vpod4-oss
+            aaep:
+                 - vpod4-leaf1xx
+vpod5:
+   vlan_pools:
+           - name: vpod5-aci2.0
+             vlans: [2,3,4]
+
+   phy_dom:
+         - name: vpod5-phys-dom
+           vlanNs: vpod5-aci2.0
+           aaep:
+                - vpod5-leaf1xx
+                - vpod5-leaf2xx
+
+vpod0:
+   vlan_pools:
+           - name: vpod0-cp
+             vlans: [2,12,13,14]
+
+   phy_dom:
+          - name: vpod0-phys-dom
+            vlanNs: vpod0-cp
+            aaep:
+                 - vpod0-leaf1xx
